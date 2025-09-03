@@ -51,8 +51,8 @@ capcut_domain_redirect/
 2. **Domain Extraction**: System extracts domain from the email (e.g., `example.com` from `user@example.com`)
 3. **API Check**: Domain is checked against the internal domain list via API
 4. **Smart Redirect**:
-   - **If domain found**: Redirects to `https://tmail.wibucrypto.pro/mailbox/[email]`
-   - **If not found**: Redirects to `https://generator.email/username@mail-temp.com/[email]`
+   - **If domain found**: Redirects to `https://tmail.wibucrypto.pro/mailbox/[email]` (new tab)
+   - **If not found**: Redirects to `https://generator.email/[email]` (new tab)
 
 ## API Configuration
 
@@ -128,11 +128,17 @@ const API_CONFIG = {
 ### Redirect URLs
 Modify redirect templates in `scripts/utils.js`:
 ```javascript
-const REDIRECT_TEMPLATES = {
-    internal: 'https://your-internal-service.com/{email}',
-    external: 'https://your-external-service.com/{email}'
+const URLUtils = {
+    buildInternalURL(email) {
+        return `https://your-internal-service.com/${email}`;
+    },
+    buildExternalURL(email) {
+        return `https://your-external-service.com/${email}`;
+    }
 };
 ```
+
+**Note**: Both internal and external redirects automatically open in new tabs for better user experience.
 
 ## Troubleshooting
 

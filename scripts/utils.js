@@ -255,7 +255,7 @@ const URLUtils = {
      */
     buildExternalURL(email) {
         const normalizedEmail = normalizeEmail(email);
-        return `https://generator.email/username@mail-temp.com/${normalizedEmail}`;
+        return `https://generator.email/${normalizedEmail}`;
     },
 
     /**

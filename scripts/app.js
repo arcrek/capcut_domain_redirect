@@ -240,8 +240,9 @@ class EmailRedirectApp {
             this.showSuccess(`Redirecting to ${isListed ? 'internal' : 'external'} email service...`);
             
             // Redirect after short delay
+            // Both internal and external URLs open in new tab
             setTimeout(() => {
-                utils.URLUtils.safeRedirect(redirectUrl);
+                utils.URLUtils.safeRedirect(redirectUrl, true);
             }, 1500);
 
         } catch (error) {
