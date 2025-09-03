@@ -1,0 +1,70 @@
+{
+  "ui": {
+    "title": "Đọc Email Capcut",
+    "emailPlaceholder": "Nhập địa chỉ email của bạn",
+    "goButton": "THỰC HIỆN",
+    "languageToggle": "Ngôn ngữ",
+    "themeToggle": "Chế độ tối",
+    "lightMode": "Chế độ sáng",
+    "darkMode": "Chế độ tối"
+  },
+  "messages": {
+    "invalidEmail": "Vui lòng nhập địa chỉ email hợp lệ",
+    "loading": "Đang tải...",
+    "processingEmail": "Đang kiểm tra email...",
+    "redirecting": "Đang chuyển hướng...",
+    "redirectingInternal": "Đang chuyển hướng đến dịch vụ email nội bộ...",
+    "redirectingExternal": "Đang chuyển hướng đến dịch vụ email bên ngoài...",
+    "error": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "networkError": "Kết nối mạng thất bại. Vui lòng kiểm tra kết nối internet.",
+    "apiError": "Dịch vụ tạm thời không khả dụng. Vui lòng thử lại sau.",
+    "validationError": "Vui lòng kiểm tra định dạng email và thử lại.",
+    "success": "Email đã được xử lý thành công",
+    "domainNotFound": "Không tìm thấy email trong cơ sở dữ liệu",
+    "domainFound": "Đã tìm thấy email trong cơ sở dữ liệu",
+    "redirectFallback": "Chuyển hướng thất bại. URL đã được sao chép vào clipboard",
+    "languageChanged": "Ngôn ngữ đã chuyển sang tiếng Việt",
+    "themeChanged": "Giao diện đã thay đổi",
+    "darkModeEnabled": "Đã bật chế độ tối",
+    "lightModeEnabled": "Đã bật chế độ sáng"
+  },
+  "accessibility": {
+    "emailInput": "Nhập địa chỉ email để chuyển hướng đến dịch vụ email phù hợp",
+    "submitButton": "Gửi email để chuyển hướng đến dịch vụ phù hợp",
+    "languageToggle": "Chuyển đổi ngôn ngữ giữa tiếng Anh và tiếng Việt",
+    "themeToggle": "Chuyển đổi giữa chế độ sáng và tối",
+    "statusRegion": "Thông báo trạng thái và thông tin",
+    "loadingSpinner": "Đang xử lý yêu cầu, vui lòng đợi",
+    "errorMessage": "Thông báo lỗi",
+    "successMessage": "Thông báo thành công",
+    "infoMessage": "Thông báo thông tin"
+  },
+  "help": {
+    "emailFormat": "Vui lòng nhập địa chỉ email hợp lệ (ví dụ: user@example.com)",
+    "domainCheck": "Chúng tôi sẽ kiểm tra xem email có trong hệ thống nội bộ không",
+    "internalRedirect": "Tên miền nội bộ sẽ chuyển hướng đến dịch vụ email bảo mật",
+    "externalRedirect": "Tên miền bên ngoài sẽ chuyển hướng đến trình tạo email tạm thời",
+    "themeToggle": "Sử dụng biểu tượng mặt trăng/mặt trời để chuyển đổi giao diện sáng/tối",
+    "languageToggle": "Sử dụng biểu tượng địa cầu để chuyển đổi giữa tiếng Anh và tiếng Việt",
+    "keyboardShortcuts": "Phím tắt: Ctrl+T (giao diện), Ctrl+L (ngôn ngữ), Escape (xóa)"
+  },
+  "status": {
+    "initializing": "Đang khởi tạo ứng dụng...",
+    "ready": "Sẵn sàng xử lý email",
+    "offline": "Bạn đang ngoại tuyến. Một số tính năng có thể không hoạt động.",
+    "cacheExpired": "Bộ nhớ cache danh sách email đã hết hạn. Đang làm mới...",
+    "cacheUpdated": "Danh sách email đã được cập nhật thành công",
+    "apiUnavailable": "Dịch vụ email tạm thời không khả dụng"
+  },
+  "errors": {
+    "generic": "Đã xảy ra sự cố. Vui lòng thử lại.",
+    "initialization": "Không thể khởi tạo ứng dụng",
+    "languageLoad": "Không thể tải dữ liệu ngôn ngữ",
+    "themeLoad": "Không thể tải cài đặt giao diện",
+    "apiTimeout": "Yêu cầu hết thời gian. Vui lòng thử lại.",
+    "invalidResponse": "Nhận được phản hồi không hợp lệ từ máy chủ",
+    "noInternet": "Không phát hiện kết nối internet",
+    "storageError": "Không thể lưu cài đặt",
+    "redirectError": "Không thể chuyển hướng. Vui lòng thử URL thủ công."
+  }
+}

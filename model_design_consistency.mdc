@@ -1,0 +1,758 @@
+---
+alwaysApply: true
+---
+
+# Model Design Consistency (MDC)
+**Email Domain Redirect Panel - Design Standards & Guidelines**
+
+## 1. UI/UX Consistency Model
+
+### 1.1 Layout Standards
+```
+Container Specifications:
+- Max width: 600px
+- Center alignment: margin 0 auto
+- Padding: 20px (mobile: 16px)
+- Border radius: 8px (consistent across all components)
+```
+
+### 1.2 Component Hierarchy
+```
+Primary Components:
+├── Header Section
+│   ├── Title (h1)
+│   └── Language Toggle
+├── Main Panel
+│   ├── Email Input Field
+│   ├── GO Button
+│   └── Status Messages
+└── Footer Section
+    └── Theme Toggle
+```
+
+### 1.3 Interactive Elements
+```
+Input Field:
+- Height: 48px
+- Border: 2px solid
+- Focus state: border color change + box-shadow
+- Placeholder: consistent opacity (0.6)
+
+Buttons:
+- Height: 48px
+- Minimum width: 100px
+- Border radius: 6px
+- Transition: all 0.2s ease
+
+Toggle Switches:
+- Size: 24px height
+- Consistent positioning (top-right for language, bottom-right for theme)
+```
+
+## 2. Theme Consistency Model
+
+### 2.1 Color Palette Definition
+```css
+/* Light Theme */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --accent-primary: #007bff;
+  --accent-hover: #0056b3;
+  --border-color: #dee2e6;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --error: #dc3545;
+  --success: #28a745;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-primary: #4dabf7;
+  --accent-hover: #339af0;
+  --border-color: #404040;
+  --shadow: rgba(255, 255, 255, 0.1);
+  --error: #ff6b6b;
+  --success: #51cf66;
+}
+```
+
+### 2.2 Theme Transition Standards
+```css
+/* All theme transitions must use this duration */
+transition: background-color 0.3s ease, 
+           color 0.3s ease, 
+           border-color 0.3s ease;
+```
+
+### 2.3 Theme Toggle Implementation
+```javascript
+// Consistent theme toggle behavior
+const THEME_STORAGE_KEY = 'email-redirect-theme';
+const THEME_ATTRIBUTE = 'data-theme';
+const THEMES = ['light', 'dark'];
+```
+
+## 3. Language Consistency Model
+
+### 3.1 Language Structure Standard
+```json
+{
+  "ui": {
+    "title": "",
+    "emailPlaceholder": "",
+    "goButton": "",
+    "languageToggle": "",
+    "themeToggle": ""
+  },
+  "messages": {
+    "invalidEmail": "",
+    "loading": "",
+    "error": "",
+    "redirecting": ""
+  },
+  "accessibility": {
+    "emailInput": "",
+    "submitButton": "",
+    "languageToggle": "",
+    "themeToggle": ""
+  }
+}
+```
+
+### 3.2 Language Implementation Rules
+```javascript
+// Language codes (ISO 639-1)
+const LANGUAGES = {
+  'en': 'English',
+  'vi': 'Tiếng Việt'
+};
+
+// Storage key consistency
+const LANGUAGE_STORAGE_KEY = 'email-redirect-language';
+
+// Default language fallback
+const DEFAULT_LANGUAGE = 'en';
+```
+
+### 3.3 Text Content Guidelines
+```
+English (en):
+- Tone: Professional, concise
+- Button text: Action-oriented (GO, Toggle, Switch)
+- Error messages: Clear, helpful
+
+Vietnamese (vi):
+- Tone: Formal but friendly
+- Consistent terminology for technical terms
+- Proper Vietnamese grammar and accents
+```
+
+## 4. API Consistency Model
+
+### 4.1 API Integration Standards
+```javascript
+// API Configuration
+const API_CONFIG = {
+  baseUrl: 'https://tmail.wibucrypto.pro',
+  endpoints: {
+    domains: '/api/domains/nvf59twbGhxLNeo48ESZ'
+  },
+  timeout: 10000,
+  retries: 3
+};
+
+// Cache Configuration
+const CACHE_CONFIG = {
+  storageKey: 'email-redirect-domains',
+  timestampKey: 'email-redirect-domains-timestamp',
+  refreshInterval: 5 * 60 * 1000, // 5 minutes
+  maxAge: 15 * 60 * 1000 // 15 minutes max age
+};
+```
+
+### 4.2 Error Handling Standards
+```javascript
+// Consistent error handling
+const ERROR_TYPES = {
+  NETWORK: 'network',
+  API: 'api',
+  VALIDATION: 'validation',
+  CACHE: 'cache'
+};
+
+// Error message structure
+const errorMessage = {
+  type: ERROR_TYPES.NETWORK,
+  message: 'User-friendly message',
+  technical: 'Technical details for debugging'
+};
+```
+
+### 4.3 Redirect URL Construction
+```javascript
+// URL Templates
+const REDIRECT_TEMPLATES = {
+  internal: 'https://tmail.wibucrypto.pro/mailbox/{email}',
+  external: 'https://generator.email/username@mail-temp.com/{email}'
+};
+
+// Email validation pattern
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+```
+
+## 5. Code Style Consistency
+
+### 5.1 Naming Conventions
+```javascript
+// Variables: camelCase
+const userEmail = 'example@domain.com';
+const domainList = [];
+
+// Constants: UPPER_SNAKE_CASE
+const API_ENDPOINT = 'https://api.example.com';
+const CACHE_DURATION = 300000;
+
+// Functions: camelCase, descriptive verbs
+function extractDomain(email) {}
+function validateEmail(email) {}
+function redirectUser(url) {}
+
+// CSS Classes: kebab-case with BEM methodology
+.email-panel {}
+.email-panel__input {}
+.email-panel__button {}
+.email-panel__button--primary {}
+```
+
+### 5.2 File Organization Standards
+```
+Folder Structure Rules:
+- styles/: All CSS files
+- scripts/: All JavaScript files
+- assets/: Images, icons, fonts
+- languages/: Translation files
+
+File Naming:
+- main files: index.html, main.css, app.js
+- utility files: descriptive names (utils.js, api.js)
+- language files: language code (en.json, vi.json)
+```
+
+### 5.3 HTML Structure Standards
+```html
+<!-- Consistent semantic structure -->
+<main class="email-panel">
+  <header class="email-panel__header">
+    <h1 class="email-panel__title"></h1>
+    <button class="language-toggle" aria-label=""></button>
+  </header>
+  
+  <section class="email-panel__form">
+    <input class="email-panel__input" type="email" aria-label="">
+    <button class="email-panel__button email-panel__button--primary"></button>
+  </section>
+  
+  <footer class="email-panel__footer">
+    <button class="theme-toggle" aria-label=""></button>
+  </footer>
+</main>
+```
+
+## 6. Accessibility Consistency
+
+### 6.1 ARIA Standards
+```html
+<!-- Required ARIA attributes -->
+<input aria-label="Email address input" 
+       aria-describedby="email-help"
+       aria-invalid="false">
+
+<button aria-label="Submit email" 
+        aria-pressed="false"
+        aria-disabled="false">
+
+<div role="status" aria-live="polite"></div>
+```
+
+### 6.2 Keyboard Navigation
+```
+Tab Order:
+1. Language toggle
+2. Email input field
+3. GO button
+4. Theme toggle
+
+Keyboard Shortcuts:
+- Enter: Submit form (when input focused)
+- Escape: Clear input/cancel action
+- Space: Toggle buttons (theme/language)
+```
+
+## 7. Performance Standards
+
+### 7.1 Loading Requirements
+```
+Performance Targets:
+- Initial load: < 1 second
+- Theme toggle: < 100ms
+- Language switch: < 200ms
+- API response: < 3 seconds
+- Cache lookup: < 50ms
+```
+
+### 7.2 Bundle Size Limits
+```
+File Size Targets:
+- HTML: < 5KB
+- CSS: < 15KB
+- JavaScript: < 25KB
+- Total Assets: < 50KB
+- API Cache: < 10KB
+```
+
+## 8. Testing Consistency
+
+### 8.1 Browser Testing Matrix
+```
+Required Testing:
+- Chrome (latest, latest-1)
+- Firefox (latest, latest-1)
+- Safari (latest on macOS/iOS)
+- Edge (latest)
+
+Mobile Testing:
+- iOS Safari (latest)
+- Chrome Mobile (latest)
+- Samsung Internet (latest)
+```
+
+### 8.2 Functionality Testing Checklist
+```
+Core Features:
+□ Email input validation
+□ Domain extraction
+□ API domain checking
+□ Correct redirect URL generation
+□ Theme toggle persistence
+□ Language toggle persistence
+□ Error handling display
+□ Loading states
+□ Responsive layout
+□ Accessibility features
+```
+
+## 9. Deployment Consistency
+
+### 9.1 CPanel Upload Structure
+```
+public_html/email-redirect/
+├── index.html
+├── styles/
+├── scripts/
+├── assets/
+└── languages/
+```
+
+### 9.2 Configuration Management
+```javascript
+// Environment-specific settings
+const CONFIG = {
+  production: {
+    apiUrl: 'https://tmail.wibucrypto.pro',
+    cacheTimeout: 300000,
+    debug: false
+  },
+  development: {
+    apiUrl: 'https://tmail.wibucrypto.pro',
+    cacheTimeout: 60000,
+    debug: true
+  }
+};
+```
+
+---
+
+**Compliance Note**: All components must adhere to these standards for consistency. Any deviation requires documentation and approval through project update process.
+# Model Design Consistency (MDC)
+**Email Domain Redirect Panel - Design Standards & Guidelines**
+
+## 1. UI/UX Consistency Model
+
+### 1.1 Layout Standards
+```
+Container Specifications:
+- Max width: 600px
+- Center alignment: margin 0 auto
+- Padding: 20px (mobile: 16px)
+- Border radius: 8px (consistent across all components)
+```
+
+### 1.2 Component Hierarchy
+```
+Primary Components:
+├── Header Section
+│   ├── Title (h1)
+│   └── Language Toggle
+├── Main Panel
+│   ├── Email Input Field
+│   ├── GO Button
+│   └── Status Messages
+└── Footer Section
+    └── Theme Toggle
+```
+
+### 1.3 Interactive Elements
+```
+Input Field:
+- Height: 48px
+- Border: 2px solid
+- Focus state: border color change + box-shadow
+- Placeholder: consistent opacity (0.6)
+
+Buttons:
+- Height: 48px
+- Minimum width: 100px
+- Border radius: 6px
+- Transition: all 0.2s ease
+
+Toggle Switches:
+- Size: 24px height
+- Consistent positioning (top-right for language, bottom-right for theme)
+```
+
+## 2. Theme Consistency Model
+
+### 2.1 Color Palette Definition
+```css
+/* Light Theme */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --accent-primary: #007bff;
+  --accent-hover: #0056b3;
+  --border-color: #dee2e6;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --error: #dc3545;
+  --success: #28a745;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-primary: #4dabf7;
+  --accent-hover: #339af0;
+  --border-color: #404040;
+  --shadow: rgba(255, 255, 255, 0.1);
+  --error: #ff6b6b;
+  --success: #51cf66;
+}
+```
+
+### 2.2 Theme Transition Standards
+```css
+/* All theme transitions must use this duration */
+transition: background-color 0.3s ease, 
+           color 0.3s ease, 
+           border-color 0.3s ease;
+```
+
+### 2.3 Theme Toggle Implementation
+```javascript
+// Consistent theme toggle behavior
+const THEME_STORAGE_KEY = 'email-redirect-theme';
+const THEME_ATTRIBUTE = 'data-theme';
+const THEMES = ['light', 'dark'];
+```
+
+## 3. Language Consistency Model
+
+### 3.1 Language Structure Standard
+```json
+{
+  "ui": {
+    "title": "",
+    "emailPlaceholder": "",
+    "goButton": "",
+    "languageToggle": "",
+    "themeToggle": ""
+  },
+  "messages": {
+    "invalidEmail": "",
+    "loading": "",
+    "error": "",
+    "redirecting": ""
+  },
+  "accessibility": {
+    "emailInput": "",
+    "submitButton": "",
+    "languageToggle": "",
+    "themeToggle": ""
+  }
+}
+```
+
+### 3.2 Language Implementation Rules
+```javascript
+// Language codes (ISO 639-1)
+const LANGUAGES = {
+  'en': 'English',
+  'vi': 'Tiếng Việt'
+};
+
+// Storage key consistency
+const LANGUAGE_STORAGE_KEY = 'email-redirect-language';
+
+// Default language fallback
+const DEFAULT_LANGUAGE = 'en';
+```
+
+### 3.3 Text Content Guidelines
+```
+English (en):
+- Tone: Professional, concise
+- Button text: Action-oriented (GO, Toggle, Switch)
+- Error messages: Clear, helpful
+
+Vietnamese (vi):
+- Tone: Formal but friendly
+- Consistent terminology for technical terms
+- Proper Vietnamese grammar and accents
+```
+
+## 4. API Consistency Model
+
+### 4.1 API Integration Standards
+```javascript
+// API Configuration
+const API_CONFIG = {
+  baseUrl: 'https://tmail.wibucrypto.pro',
+  endpoints: {
+    domains: '/api/domains/nvf59twbGhxLNeo48ESZ'
+  },
+  timeout: 10000,
+  retries: 3
+};
+
+// Cache Configuration
+const CACHE_CONFIG = {
+  storageKey: 'email-redirect-domains',
+  timestampKey: 'email-redirect-domains-timestamp',
+  refreshInterval: 5 * 60 * 1000, // 5 minutes
+  maxAge: 15 * 60 * 1000 // 15 minutes max age
+};
+```
+
+### 4.2 Error Handling Standards
+```javascript
+// Consistent error handling
+const ERROR_TYPES = {
+  NETWORK: 'network',
+  API: 'api',
+  VALIDATION: 'validation',
+  CACHE: 'cache'
+};
+
+// Error message structure
+const errorMessage = {
+  type: ERROR_TYPES.NETWORK,
+  message: 'User-friendly message',
+  technical: 'Technical details for debugging'
+};
+```
+
+### 4.3 Redirect URL Construction
+```javascript
+// URL Templates
+const REDIRECT_TEMPLATES = {
+  internal: 'https://tmail.wibucrypto.pro/mailbox/{email}',
+  external: 'https://generator.email/username@mail-temp.com/{email}'
+};
+
+// Email validation pattern
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+```
+
+## 5. Code Style Consistency
+
+### 5.1 Naming Conventions
+```javascript
+// Variables: camelCase
+const userEmail = 'example@domain.com';
+const domainList = [];
+
+// Constants: UPPER_SNAKE_CASE
+const API_ENDPOINT = 'https://api.example.com';
+const CACHE_DURATION = 300000;
+
+// Functions: camelCase, descriptive verbs
+function extractDomain(email) {}
+function validateEmail(email) {}
+function redirectUser(url) {}
+
+// CSS Classes: kebab-case with BEM methodology
+.email-panel {}
+.email-panel__input {}
+.email-panel__button {}
+.email-panel__button--primary {}
+```
+
+### 5.2 File Organization Standards
+```
+Folder Structure Rules:
+- styles/: All CSS files
+- scripts/: All JavaScript files
+- assets/: Images, icons, fonts
+- languages/: Translation files
+
+File Naming:
+- main files: index.html, main.css, app.js
+- utility files: descriptive names (utils.js, api.js)
+- language files: language code (en.json, vi.json)
+```
+
+### 5.3 HTML Structure Standards
+```html
+<!-- Consistent semantic structure -->
+<main class="email-panel">
+  <header class="email-panel__header">
+    <h1 class="email-panel__title"></h1>
+    <button class="language-toggle" aria-label=""></button>
+  </header>
+  
+  <section class="email-panel__form">
+    <input class="email-panel__input" type="email" aria-label="">
+    <button class="email-panel__button email-panel__button--primary"></button>
+  </section>
+  
+  <footer class="email-panel__footer">
+    <button class="theme-toggle" aria-label=""></button>
+  </footer>
+</main>
+```
+
+## 6. Accessibility Consistency
+
+### 6.1 ARIA Standards
+```html
+<!-- Required ARIA attributes -->
+<input aria-label="Email address input" 
+       aria-describedby="email-help"
+       aria-invalid="false">
+
+<button aria-label="Submit email" 
+        aria-pressed="false"
+        aria-disabled="false">
+
+<div role="status" aria-live="polite"></div>
+```
+
+### 6.2 Keyboard Navigation
+```
+Tab Order:
+1. Language toggle
+2. Email input field
+3. GO button
+4. Theme toggle
+
+Keyboard Shortcuts:
+- Enter: Submit form (when input focused)
+- Escape: Clear input/cancel action
+- Space: Toggle buttons (theme/language)
+```
+
+## 7. Performance Standards
+
+### 7.1 Loading Requirements
+```
+Performance Targets:
+- Initial load: < 1 second
+- Theme toggle: < 100ms
+- Language switch: < 200ms
+- API response: < 3 seconds
+- Cache lookup: < 50ms
+```
+
+### 7.2 Bundle Size Limits
+```
+File Size Targets:
+- HTML: < 5KB
+- CSS: < 15KB
+- JavaScript: < 25KB
+- Total Assets: < 50KB
+- API Cache: < 10KB
+```
+
+## 8. Testing Consistency
+
+### 8.1 Browser Testing Matrix
+```
+Required Testing:
+- Chrome (latest, latest-1)
+- Firefox (latest, latest-1)
+- Safari (latest on macOS/iOS)
+- Edge (latest)
+
+Mobile Testing:
+- iOS Safari (latest)
+- Chrome Mobile (latest)
+- Samsung Internet (latest)
+```
+
+### 8.2 Functionality Testing Checklist
+```
+Core Features:
+□ Email input validation
+□ Domain extraction
+□ API domain checking
+□ Correct redirect URL generation
+□ Theme toggle persistence
+□ Language toggle persistence
+□ Error handling display
+□ Loading states
+□ Responsive layout
+□ Accessibility features
+```
+
+## 9. Deployment Consistency
+
+### 9.1 CPanel Upload Structure
+```
+public_html/email-redirect/
+├── index.html
+├── styles/
+├── scripts/
+├── assets/
+└── languages/
+```
+
+### 9.2 Configuration Management
+```javascript
+// Environment-specific settings
+const CONFIG = {
+  production: {
+    apiUrl: 'https://tmail.wibucrypto.pro',
+    cacheTimeout: 300000,
+    debug: false
+  },
+  development: {
+    apiUrl: 'https://tmail.wibucrypto.pro',
+    cacheTimeout: 60000,
+    debug: true
+  }
+};
+```
+
+---
+
+**Compliance Note**: All components must adhere to these standards for consistency. Any deviation requires documentation and approval through project update process.

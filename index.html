@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Domain Redirect Panel</title>
+    <meta name="description" content="Smart email domain redirect service with multi-language support">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles/main.css" as="style">
+    <link rel="preload" href="scripts/app.js" as="script">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/themes.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <main class="email-panel" role="main">
+        <!-- Header Section -->
+        <header class="email-panel__header">
+            <h1 class="email-panel__title" data-i18n="ui.title">Email Domain Redirect</h1>
+            <button class="language-toggle" 
+                    aria-label="Switch language" 
+                    aria-pressed="false"
+                    data-i18n-aria="accessibility.languageToggle">
+                <span class="language-toggle__text">EN</span>
+                <span class="language-toggle__icon">🌐</span>
+            </button>
+        </header>
+
+        <!-- Main Form Section -->
+        <section class="email-panel__form">
+            <div class="input-group">
+                <label for="email-input" class="visually-hidden" data-i18n="accessibility.emailInput">
+                    Enter your email address
+                </label>
+                <input type="email" 
+                       id="email-input"
+                       class="email-panel__input" 
+                       placeholder="Enter your email address"
+                       data-i18n-placeholder="ui.emailPlaceholder"
+                       aria-describedby="email-help"
+                       aria-invalid="false"
+                       autocomplete="email"
+                       required>
+                <div id="email-help" class="input-help visually-hidden">
+                    Enter a valid email address to redirect to the appropriate email service
+                </div>
+            </div>
+            
+            <button type="submit" 
+                    class="email-panel__button email-panel__button--primary"
+                    aria-label="Submit email for redirection"
+                    data-i18n="ui.goButton"
+                    data-i18n-aria="accessibility.submitButton"
+                    disabled>
+                GO
+            </button>
+        </section>
+
+        <!-- Status Messages -->
+        <div class="status-container">
+            <div id="status-message" 
+                 class="status-message" 
+                 role="status" 
+                 aria-live="polite"
+                 aria-atomic="true">
+            </div>
+            
+            <div id="loading-spinner" 
+                 class="loading-spinner" 
+                 role="status" 
+                 aria-label="Loading"
+                 aria-hidden="true">
+                <div class="spinner"></div>
+                <span data-i18n="messages.loading">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer class="email-panel__footer">
+            <button class="theme-toggle" 
+                    aria-label="Toggle dark mode"
+                    aria-pressed="false"
+                    data-i18n-aria="accessibility.themeToggle">
+                <span class="theme-toggle__icon">🌙</span>
+                <span class="theme-toggle__text" data-i18n="ui.themeToggle">Dark Mode</span>
+            </button>
+        </footer>
+    </main>
+
+    <!-- JavaScript Modules -->
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/i18n.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

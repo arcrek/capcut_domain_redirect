@@ -1,0 +1,70 @@
+{
+  "ui": {
+    "title": "Read Email Capcut",
+    "emailPlaceholder": "Enter your email address",
+    "goButton": "GO",
+    "languageToggle": "Language",
+    "themeToggle": "Dark Mode",
+    "lightMode": "Light Mode",
+    "darkMode": "Dark Mode"
+  },
+  "messages": {
+    "invalidEmail": "Please enter a valid email address",
+    "loading": "Loading...",
+    "processingEmail": "Checking email...",
+    "redirecting": "Redirecting...",
+    "redirectingInternal": "Redirecting to internal email service...",
+    "redirectingExternal": "Redirecting to external email service...",
+    "error": "An error occurred. Please try again.",
+    "networkError": "Network connection failed. Please check your internet connection.",
+    "apiError": "Service temporarily unavailable. Please try again later.",
+    "validationError": "Please check your email format and try again.",
+    "success": "Email processed successfully",
+    "domainNotFound": "Email not found in our database",
+    "domainFound": "Email found in our database",
+    "redirectFallback": "Redirect failed. URL copied to clipboard",
+    "languageChanged": "Language changed to English",
+    "themeChanged": "Theme changed",
+    "darkModeEnabled": "Dark mode enabled",
+    "lightModeEnabled": "Light mode enabled"
+  },
+  "accessibility": {
+    "emailInput": "Enter your email address to redirect to appropriate email service",
+    "submitButton": "Submit email for redirection to appropriate service",
+    "languageToggle": "Switch language between English and Vietnamese",
+    "themeToggle": "Toggle between light and dark theme modes",
+    "statusRegion": "Status messages and notifications",
+    "loadingSpinner": "Processing your request, please wait",
+    "errorMessage": "Error notification",
+    "successMessage": "Success notification",
+    "infoMessage": "Information notification"
+  },
+  "help": {
+    "emailFormat": "Please enter a valid email address (e.g., user@example.com)",
+    "domainCheck": "We'll check if your email is in our internal system",
+    "internalRedirect": "Internal domains redirect to our secure email service",
+    "externalRedirect": "External domains redirect to temporary email generator",
+    "themeToggle": "Use the moon/sun icon to switch between light and dark themes",
+    "languageToggle": "Use the globe icon to switch between English and Vietnamese",
+    "keyboardShortcuts": "Keyboard shortcuts: Ctrl+T (theme), Ctrl+L (language), Escape (clear)"
+  },
+  "status": {
+    "initializing": "Initializing application...",
+    "ready": "Ready to process emails",
+    "offline": "You appear to be offline. Some features may not work.",
+    "cacheExpired": "Email list cache expired. Refreshing...",
+    "cacheUpdated": "Email list updated successfully",
+    "apiUnavailable": "Email service temporarily unavailable"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "initialization": "Failed to initialize application",
+    "languageLoad": "Failed to load language data",
+    "themeLoad": "Failed to load theme preferences",
+    "apiTimeout": "Request timed out. Please try again.",
+    "invalidResponse": "Received invalid response from server",
+    "noInternet": "No internet connection detected",
+    "storageError": "Failed to save preferences",
+    "redirectError": "Failed to redirect. Please try the URL manually."
+  }
+}

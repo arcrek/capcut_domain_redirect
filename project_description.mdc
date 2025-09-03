@@ -1,0 +1,230 @@
+---
+alwaysApply: true
+---
+
+# Email Domain Redirect Panel
+
+## Project Overview
+A simple web panel that redirects users to appropriate email services based on their email domain. The application extracts the domain from user input and checks it against a predefined list to determine the correct redirect destination.
+
+## Features
+- **Email Input & Processing**: Single input field with "GO" button for email submission
+- **Domain Validation**: Extracts domain from email and validates against API endpoint
+- **Smart Redirecting**: 
+  - If domain found in API list → redirect to `https://tmail.wibucrypto.pro/mailbox/[email]`
+  - If domain not found → redirect to `https://generator.email/username@mail-temp.com/[email]`
+- **Responsive UI**: Clean, simple interface with light/dark mode toggle
+- **Multilingual Support**: English and Vietnamese language options
+- **API Caching**: Frequent refresh of domain list for optimal performance
+
+## Tech Stack
+
+### Frontend
+- **HTML5**: Semantic markup for accessibility and SEO
+- **CSS3**: 
+  - CSS Variables for theme switching (light/dark mode)
+  - Flexbox/Grid for responsive layout
+  - No external CSS frameworks to keep it lightweight
+- **Vanilla JavaScript**: 
+  - ES6+ features for modern browser support
+  - Fetch API for HTTP requests
+  - LocalStorage for caching and user preferences
+  - No frameworks to ensure CPanel compatibility
+
+### Deployment
+- **Static Files**: Pure HTML/CSS/JS files for maximum CPanel compatibility
+- **No Build Process**: Direct upload to hosting without compilation steps
+- **Progressive Enhancement**: Works without JavaScript for basic functionality
+
+## Technical Architecture
+
+### Core Components
+1. **Email Validator**: Regex-based email format validation
+2. **Domain Extractor**: Utility to extract domain from email address
+3. **API Manager**: Handles domain list fetching with caching strategy
+4. **Theme Controller**: Manages light/dark mode persistence
+5. **Language Manager**: Handles i18n without external libraries
+6. **Redirect Handler**: Manages URL construction and navigation
+
+### API Integration
+- **Endpoint**: `https://tmail.wibucrypto.pro/api/domains/nvf59twbGhxLNeo48ESZ`
+- **Caching Strategy**: 
+  - LocalStorage with timestamp
+  - Configurable refresh interval (default: 5 minutes)
+  - Fallback to cached data on API failure
+- **Error Handling**: Graceful degradation when API is unavailable
+
+### File Structure
+```
+capcut_domain_redirect/
+├── index.html              # Main application file
+├── styles/
+│   ├── main.css           # Core styles and layout
+│   ├── themes.css         # Light/dark theme definitions
+│   └── responsive.css     # Mobile-first responsive design
+├── scripts/
+│   ├── app.js             # Main application logic
+│   ├── api.js             # API handling and caching
+│   ├── i18n.js            # Language management
+│   └── utils.js           # Utility functions
+├── assets/
+│   └── icons/             # Theme toggle and language icons
+└── languages/
+    ├── en.json            # English translations
+    └── vi.json            # Vietnamese translations
+```
+
+## Browser Support
+- **Modern Browsers**: Chrome 60+, Firefox 55+, Safari 11+, Edge 79+
+- **Mobile**: iOS Safari 11+, Chrome Mobile 60+
+- **Graceful Degradation**: Basic functionality in older browsers
+
+## Performance Targets
+- **Load Time**: < 1 second on 3G connection
+- **Bundle Size**: < 100KB total (uncompressed)
+- **API Response**: Cached responses for improved UX
+- **Responsive**: Works smoothly on all device sizes
+
+## Security Considerations
+- **Input Validation**: Client-side email format validation
+- **HTTPS Redirects**: Ensure all redirects use HTTPS
+- **CORS Handling**: Proper error handling for cross-origin requests
+- **No Sensitive Data**: No storage of user emails or personal information
+
+## Deployment Requirements
+- **CPanel Compatibility**: Standard shared hosting with file manager
+- **No Server Dependencies**: Pure client-side application
+- **Upload Process**: Direct file upload to public_html or subdirectory
+- **Domain Setup**: Works with any domain/subdomain configuration
+
+## Development Workflow
+1. **Development**: Local development with live server
+2. **Testing**: Cross-browser and device testing
+3. **Deployment**: Direct file upload to CPanel file manager
+4. **Updates**: Simple file replacement for updates
+
+## Future Enhancements (Optional)
+- Additional language support
+- Custom theme options
+- Analytics integration
+- Offline functionality with Service Worker
+- Email history (with user consent)
+
+## Success Metrics
+- Fast loading times across all devices
+- Seamless domain checking and redirection
+- Intuitive user experience with minimal friction
+- Reliable performance with API caching strategy
+# Email Domain Redirect Panel
+
+## Project Overview
+A simple web panel that redirects users to appropriate email services based on their email domain. The application extracts the domain from user input and checks it against a predefined list to determine the correct redirect destination.
+
+## Features
+- **Email Input & Processing**: Single input field with "GO" button for email submission
+- **Domain Validation**: Extracts domain from email and validates against API endpoint
+- **Smart Redirecting**: 
+  - If domain found in API list → redirect to `https://tmail.wibucrypto.pro/mailbox/[email]`
+  - If domain not found → redirect to `https://generator.email/username@mail-temp.com/[email]`
+- **Responsive UI**: Clean, simple interface with light/dark mode toggle
+- **Multilingual Support**: English and Vietnamese language options
+- **API Caching**: Frequent refresh of domain list for optimal performance
+
+## Tech Stack
+
+### Frontend
+- **HTML5**: Semantic markup for accessibility and SEO
+- **CSS3**: 
+  - CSS Variables for theme switching (light/dark mode)
+  - Flexbox/Grid for responsive layout
+  - No external CSS frameworks to keep it lightweight
+- **Vanilla JavaScript**: 
+  - ES6+ features for modern browser support
+  - Fetch API for HTTP requests
+  - LocalStorage for caching and user preferences
+  - No frameworks to ensure CPanel compatibility
+
+### Deployment
+- **Static Files**: Pure HTML/CSS/JS files for maximum CPanel compatibility
+- **No Build Process**: Direct upload to hosting without compilation steps
+- **Progressive Enhancement**: Works without JavaScript for basic functionality
+
+## Technical Architecture
+
+### Core Components
+1. **Email Validator**: Regex-based email format validation
+2. **Domain Extractor**: Utility to extract domain from email address
+3. **API Manager**: Handles domain list fetching with caching strategy
+4. **Theme Controller**: Manages light/dark mode persistence
+5. **Language Manager**: Handles i18n without external libraries
+6. **Redirect Handler**: Manages URL construction and navigation
+
+### API Integration
+- **Endpoint**: `https://tmail.wibucrypto.pro/api/domains/nvf59twbGhxLNeo48ESZ`
+- **Caching Strategy**: 
+  - LocalStorage with timestamp
+  - Configurable refresh interval (default: 5 minutes)
+  - Fallback to cached data on API failure
+- **Error Handling**: Graceful degradation when API is unavailable
+
+### File Structure
+```
+capcut_domain_redirect/
+├── index.html              # Main application file
+├── styles/
+│   ├── main.css           # Core styles and layout
+│   ├── themes.css         # Light/dark theme definitions
+│   └── responsive.css     # Mobile-first responsive design
+├── scripts/
+│   ├── app.js             # Main application logic
+│   ├── api.js             # API handling and caching
+│   ├── i18n.js            # Language management
+│   └── utils.js           # Utility functions
+├── assets/
+│   └── icons/             # Theme toggle and language icons
+└── languages/
+    ├── en.json            # English translations
+    └── vi.json            # Vietnamese translations
+```
+
+## Browser Support
+- **Modern Browsers**: Chrome 60+, Firefox 55+, Safari 11+, Edge 79+
+- **Mobile**: iOS Safari 11+, Chrome Mobile 60+
+- **Graceful Degradation**: Basic functionality in older browsers
+
+## Performance Targets
+- **Load Time**: < 1 second on 3G connection
+- **Bundle Size**: < 100KB total (uncompressed)
+- **API Response**: Cached responses for improved UX
+- **Responsive**: Works smoothly on all device sizes
+
+## Security Considerations
+- **Input Validation**: Client-side email format validation
+- **HTTPS Redirects**: Ensure all redirects use HTTPS
+- **CORS Handling**: Proper error handling for cross-origin requests
+- **No Sensitive Data**: No storage of user emails or personal information
+
+## Deployment Requirements
+- **CPanel Compatibility**: Standard shared hosting with file manager
+- **No Server Dependencies**: Pure client-side application
+- **Upload Process**: Direct file upload to public_html or subdirectory
+- **Domain Setup**: Works with any domain/subdomain configuration
+
+## Development Workflow
+1. **Development**: Local development with live server
+2. **Testing**: Cross-browser and device testing
+3. **Deployment**: Direct file upload to CPanel file manager
+4. **Updates**: Simple file replacement for updates
+
+## Future Enhancements (Optional)
+- Additional language support
+- Custom theme options
+- Analytics integration
+- Offline functionality with Service Worker
+- Email history (with user consent)
+
+## Success Metrics
+- Fast loading times across all devices
+- Seamless domain checking and redirection
+- Intuitive user experience with minimal friction
+- Reliable performance with API caching strategy

@@ -1,0 +1,124 @@
+/* Theme Color Variables */
+:root {
+  /* Light Theme (Default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --accent-primary: #007bff;
+  --accent-hover: #0056b3;
+  --border-color: #dee2e6;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --error: #dc3545;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-primary: #4dabf7;
+  --accent-hover: #339af0;
+  --border-color: #404040;
+  --shadow: rgba(255, 255, 255, 0.1);
+  --error: #ff6b6b;
+  --success: #51cf66;
+  --info: #74c0fc;
+  --warning: #ffd43b;
+}
+
+/* Theme-specific Component Adjustments */
+
+/* Light theme specific styles */
+:root {
+  --input-bg: var(--bg-primary);
+  --panel-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --button-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  --focus-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Dark theme specific styles */
+[data-theme="dark"] {
+  --input-bg: #363636;
+  --panel-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --button-shadow: 0 4px 12px rgba(77, 171, 247, 0.3);
+  --focus-shadow: 0 0 0 3px rgba(77, 171, 247, 0.2);
+}
+
+/* Dark theme input adjustments */
+[data-theme="dark"] .email-panel__input {
+  background-color: var(--input-bg);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .email-panel__input:focus {
+  box-shadow: var(--focus-shadow);
+}
+
+/* Dark theme button adjustments */
+[data-theme="dark"] .email-panel__button--primary:hover:not(:disabled) {
+  box-shadow: var(--button-shadow);
+}
+
+/* Dark theme panel shadow */
+[data-theme="dark"] .email-panel {
+  box-shadow: var(--panel-shadow);
+}
+
+/* Theme transition animations */
+* {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Theme toggle specific animations */
+.theme-toggle__icon {
+  transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle__icon {
+  transform: rotate(180deg);
+}
+
+/* High contrast mode support for both themes */
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: #000000;
+    --text-secondary: #000000;
+  }
+  
+  [data-theme="dark"] {
+    --border-color: #ffffff;
+    --text-secondary: #ffffff;
+    --bg-primary: #000000;
+    --bg-secondary: #111111;
+  }
+}
+
+/* Auto theme detection based on system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent-primary: #4dabf7;
+    --accent-hover: #339af0;
+    --border-color: #404040;
+    --shadow: rgba(255, 255, 255, 0.1);
+    --error: #ff6b6b;
+    --success: #51cf66;
+    --info: #74c0fc;
+    --warning: #ffd43b;
+    --input-bg: #363636;
+    --panel-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --button-shadow: 0 4px 12px rgba(77, 171, 247, 0.3);
+    --focus-shadow: 0 0 0 3px rgba(77, 171, 247, 0.2);
+  }
+}
