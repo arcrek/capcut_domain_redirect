@@ -236,14 +236,12 @@ class EmailRedirectApp {
                 ? utils.URLUtils.buildInternalURL(email)
                 : utils.URLUtils.buildExternalURL(email);
 
-            // Show success message briefly before redirect
-            this.showSuccess(`Redirecting to ${isListed ? 'internal' : 'external'} email service...`);
+            // Show success message and redirect
+            const serviceType = isListed ? 'internal' : 'external';
+            this.showSuccess(`Redirecting to ${serviceType} email service...`);
             
-            // Redirect after short delay
-            // Both internal and external URLs open in new tab
-            setTimeout(() => {
-                utils.URLUtils.safeRedirect(redirectUrl, true);
-            }, 1500);
+            // Redirect in same tab
+            utils.URLUtils.safeRedirect(redirectUrl, false);
 
         } catch (error) {
             console.error('Email submission error:', error);

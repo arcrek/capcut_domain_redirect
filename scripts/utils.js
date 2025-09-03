@@ -261,15 +261,11 @@ const URLUtils = {
     /**
      * Perform safe redirect
      * @param {string} url - URL to redirect to
-     * @param {boolean} newWindow - Open in new window/tab
+     * @param {boolean} newWindow - Open in new window/tab (unused, kept for compatibility)
      */
     safeRedirect(url, newWindow = false) {
         try {
-            if (newWindow) {
-                window.open(url, '_blank', 'noopener,noreferrer');
-            } else {
-                window.location.href = url;
-            }
+            window.location.href = url;
         } catch (error) {
             console.error('Redirect failed:', error);
             // Fallback: copy URL to clipboard or show URL
@@ -285,7 +281,7 @@ const URLUtils = {
         // Try to copy to clipboard
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(url).then(() => {
-                alert(`Redirect failed. URL copied to clipboard: ${url}`);
+                alert(`Redirect failed. URL copied to clipboard:\n${url}`);
             }).catch(() => {
                 alert(`Please navigate to: ${url}`);
             });
